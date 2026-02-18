@@ -16,6 +16,9 @@ Const dailyQuests = [
   }
 ];
 
+// ===== PLAYER NAME VAR =====
+let playerName = localStorage.getItem("playerName") || ""
+
 // ===== STATE =====
 
 Let xp = parseInt(localStorage.getItem(“xp”)) || 0;
@@ -88,6 +91,64 @@ Function loadDailyQuest() {
   Document.getElementById(“outdoor-quest”).innerText = today.outdoor;
 }
 
+// =======================
+// INTRO SEQUENCE
+// =======================
+ 
+function checkIntro() {
+  if (!playerName) {
+    document.getElementById("intro-screen").classList.remove("hidden");
+  }
+}
+ 
+function startIntro() {
+  const input = document.getElementById("name-input").value.trim();
+  if (!input) return;
+ 
+  playerName = input;
+  localStorage.setItem("playerName", playerName);
+ 
+  document.getElementById("name-entry").classList.add("hidden");
+  document.getElementById("intro-text").classList.remove("hidden");
+ 
+  runIntroSequence();
+}
+ 
+function runIntroSequence() {
+  const lines = [
+    `Welcome, ${playerName}.`,
+    "The Realm has been waiting.",
+    "Your quiet strength has not gone unnoticed.",
+    "Your Quest Log is now active."
+  ];
+ 
+  let index = 0;
+  const introLine = document.getElementById("intro-line");
+ 
+  function showNextLine() {
+    if (index >= lines.length) {
+      setTimeout(() => {
+        document.getElementById("intro-screen").classList.add("hidden");
+      }, 1500);
+      return;
+    }
+ 
+    introLine.classList.remove("fade-in");
+    void introLine.offsetWidth; // reset animation
+ 
+    introLine.innerText = lines[index];
+    introLine.classList.add("fade-in");
+ 
+    index++;
+    setTimeout(showNextLine, 2500);
+  }
+ 
+  showNextLine();
+}
+
 loadDailyQuest();
+loadMonthly();
 updateUI();
+checkIntro();
+
 
