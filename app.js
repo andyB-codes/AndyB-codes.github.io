@@ -116,7 +116,7 @@ function completeQuest(type) {
   lastCompleted = today;
   localStorage.setItem("last" + capType + "Completed", today);
 
-  lastCompletedQuest = currentQuest;
+  lastCompletedQuest++;
   localStorage.setItem("lastCompletedQuest",lastCompletedQuest);
 
   
@@ -359,6 +359,7 @@ determineCurrentQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
