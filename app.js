@@ -163,7 +163,7 @@ function disableBonusButton(type){
 // =======================
  
 function loadMonthly() {
-  let date = new Date();
+  let date = new Date().toDateString();
   let month = monthNames[date.getMonth()];
   const container = document.getElementById("monthly-container");
   container.innerHTML = "";
@@ -315,6 +315,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
