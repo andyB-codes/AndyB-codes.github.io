@@ -194,7 +194,7 @@ function completeMonthly(index) {
   addXP(monthlyQuests[index].xp);
 
   monthlyQuestCompleted = month;
-  localStorage.setItem("MonthlyQuestCompletionDate", monthlyQuestCompled);
+  localStorage.setItem("MonthlyQuestCompletionDate", monthlyQuestCompleted);
   disableQuestButton("monthlyQuestButton");
  
 }
@@ -315,6 +315,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
