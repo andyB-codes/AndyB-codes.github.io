@@ -54,7 +54,7 @@ const monthlyQuests = [
 // =======================
  
 function getLevel(xp) {
-  return Math.floor(Math.sqrt(xp) / 2) + 1;
+  return Math.floor(Math.sqrt(xp) / 3) + 1;
 }
  
 function getTitle(level) {
@@ -110,9 +110,12 @@ function completeQuest(type) {
  
   lastCompleted = today;
   localStorage.setItem("lastCompleted", today);
- 
-  streak++;
-  localStorage.setItem("streak", streak);
+
+  
+  if !(lastIndoorCompleted === today || lastOutdoorCompleted === today){
+    streak++;
+    localStorage.setItem("streak", streak);
+  }
 
   disableQuestButton(type);
  
@@ -315,6 +318,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
