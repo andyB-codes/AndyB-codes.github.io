@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Gentle Quest Log</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+  <header>
+    <h1>The Gentle Quest Log</h1>
+    <div class="xp-bar">
+      <div id="xp-fill"></div>
+    </div>
+    <p id="level-info"></p>
+    <p id="streak-info"></p>
+  </header>
+
+  <main id="home-screen">
+    <div class="card">
+      <h2>🌿 Indoor Quest</h2>
+      <p id="indoor-quest"></p>
+      <button id="indoor-btn" onclick="completeQuest('indoor')">Complete (+10 XP)</button>
+      <button class="bonus" onclick="addBonus()">Bonus XP (+5)</button>
+    </div>
+
+    <div class="card">
+      <h2>🌲 Outdoor Quest</h2>
+      <p id="outdoor-quest"></p>
+      <button id="outdoor-btn" onclick="completeQuest('outdoor')">Complete (+10 XP)</button>
+    </div>
+  </main>
+
+  <section id="monthly-screen" class="hidden">
+    <div id="monthly-container"></div>
+  </section>
+
+  <section id="character-screen" class="hidden">
+    <div class="card">
+      <h2>Character</h2>
+      <p>Total XP: <span id="total-xp"></span></p>
+      <p>Level: <span id="level-number"></span></p>
+      <p>Title: <span id="title"></span></p>
+    </div>
+  </section>
+
+  <nav>
+    <button onclick="showScreen('home')">Home</button>
+    <button onclick="showScreen('monthly')">Monthly</button>
+    <button onclick="showScreen('character')">Character</button>
+  </nav>
+
+</div>
+
+<!-- Level Up Overlay -->
+<div id="levelup-overlay" class="hidden">
+  <div class="levelup-box">
+    <h2>Level Up!</h2>
+    <p id="levelup-text"></p>
+  </div>
+</div>
+
+<audio id="levelup-sound" src="levelup.mp3"></audio>
+
+<script src="app.js"></script>
+</body>
+</html>
