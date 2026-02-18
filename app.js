@@ -112,7 +112,7 @@ function completeQuest(type) {
   localStorage.setItem("lastCompleted", today);
 
   
-  if !(lastIndoorCompleted === today || lastOutdoorCompleted === today){
+  if (lastIndoorCompleted !=== today || lastOutdoorCompleted !=== today){
     streak++;
     localStorage.setItem("streak", streak);
   }
@@ -318,6 +318,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
