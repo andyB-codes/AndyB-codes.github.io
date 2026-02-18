@@ -211,7 +211,7 @@ function completeMonthly(index) {
  
 function updateUI() {
   const level = getLevel(xp);
-  const nextLevelXP = Math.pow((level * 2), 2);
+  const nextLevelXP = Math.pow((level * 3), 2);
  
   document.getElementById("total-xp").innerText = xp;
   document.getElementById("level-number").innerText = level;
@@ -333,6 +333,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
