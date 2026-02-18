@@ -4,9 +4,11 @@
  
 let xp = parseInt(localStorage.getItem("xp")) || 0;
 let streak = parseInt(localStorage.getItem("streak")) || 0;
-let lastCompleted = localStorage.getItem("lastCompleted") || "";
+let lastIndoorCompleted = localStorage.getItem("lastIndoorCompleted") || "";
+let lastOutdoorCompleted = localStorage.getItem("lastIndoorCompleted") || "";
 let playerName = localStorage.getItem("playerName") || "";
-let bonusClaimedDate = localStorage.getItem("bonusClaimedDate") || "";
+let indoorBonusClaimedDate = localStorage.getItem("indoorBonusClaimedDate") || "";
+let outdoorBonusClaimedDate = localStorage.getItem("outdoorBonusClaimedDate") || "";
  
 // =======================
 // QUEST DATA
@@ -107,9 +109,16 @@ function completeQuest(type) {
   updateUI();
 }
  
-function addBonus() {
+function addBonus(type) {
   const today = new Date().toDateString();
+  var bonusClaimedDate = "";
 
+  if (type === "indoor"){
+   bonusClaimedDate = indoorBonusClaimedDate;
+  } else {
+   bonusClaimedDate = outdoorBonusClaimedDate;
+  }
+ 
   if (bonusClaimedDate === today){
     return;
   }
@@ -117,14 +126,14 @@ function addBonus() {
   addXP(5);
 
   bonusClaimedDate = today;
-  localStorage.setItem("bonusClaimedDate",today);
+  localStorage.setItem(type + "BonusClaimedDate",today);
 
-  disableBonusButton();
+  disableBonusButton(type);
  
 }
 
-function disableBonusButton(){
-  const btn = document.getElementById("bonus-btn");
+function disableBonusButton(type){
+  const btn = document.getElementById(type + "-bonus-btn");
   if(!btn) return;
  
   btn.disabled = true;
@@ -270,6 +279,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
