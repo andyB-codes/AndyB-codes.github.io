@@ -781,7 +781,7 @@ function createEmbers() {
   for (let i = 0; i < emberCount; i++) {
     const ember = document.createElement("span");
 
-    const size = Math.random() * 6 + 4;
+    const size = Math.random() * 5 + 4;
     ember.style.width = size + "px";
     ember.style.height = size + "px";
 
@@ -802,6 +802,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
