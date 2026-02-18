@@ -14,15 +14,19 @@ let playerName = localStorage.getItem("playerName") || "";
 const dailyQuests = [
   {
     indoor: {
-      title: "Potion of Restoration – Hot tub ritual.", description: "blah"
+      title: "Potion of Restoration – Hot tub ritual.", description: "The High Alchemist insists that mana cannot regenerate without sacred water immersion", bonus: "Take the Kindle and read a chapter"
     },
     outdoor: {
-      title: "Colour Hunt – Find 3 colours outside.", description: "blah"
+      title: "Colour Hunt – Find 3 colours outside.", description: "The world hides enchantments in plain sight", bonus: "Take a photo of each item, and give it a fantasy name."
     }
   },
   {
-    indoor: {title: "Drawer of Destiny – Clear one small drawer.", description: "blah"},
-    outdoor: {title: "Left-Turn Rule – Take one unexpected turn.", decription: "blah"}
+    indoor: {
+      title: "Drawer of Destiny – Clear one small drawer.", description: "Clutter spirits weaken resolve. Today you banish them.", bonus: "Take before and after photos, and then present them with dramatic music"
+    },
+    outdoor: {
+      title: "Left-Turn Rule – Take one unexpected turn.", decription: "Heros do not always follow the well worn path", bonus: "Discover something unexpected... even if its just an unexpected fence!"
+    }
   }
 ];
  
@@ -170,8 +174,8 @@ function loadDailyQuest() {
   const todayIndex = new Date().getDate() % dailyQuests.length;
   const today = dailyQuests[todayIndex];
  
-  document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <p>${today.indoor.description}</p>`;
-  document.getElementById("outdoor-quest").innerinnerHTML = `<h3>${today.outdoor.title}</h3> <p>${today.outdoor.description}</p>`;
+  document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <h4>Bonus points: ${today.indoor.bonus}</h4> <p>${today.indoor.description}</p>`;
+  document.getElementById("outdoor-quest").innerHTML = `<h3>${today.outdoor.title}</h3> <h4>Bonus points: ${today.outdoor.bonus}</h4> <p>${today.outdoor.description}</p>`;
 }
 
 // =======================
@@ -233,5 +237,6 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
