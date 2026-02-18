@@ -250,10 +250,10 @@ function loadDailyQuest() {
   document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <h4>Bonus points: ${today.indoor.bonus}</h4> <p>${today.indoor.description}</p>`;
   document.getElementById("outdoor-quest").innerHTML = `<h3>${today.outdoor.title}</h3> <h4>Bonus points: ${today.outdoor.bonus}</h4> <p>${today.outdoor.description}</p>`;
 
-  if (indoorBonusClaimedDate === date) {
+  if (indoorBonusClaimedDate === date.toDateString()) {
     disableBonusButton("indoor");
   }
-  if (outdoorBonusClaimedDate === date){
+  if (outdoorBonusClaimedDate === date.toDateString()){
    disableBonusButton("outdoor");
   }
  
@@ -318,6 +318,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
