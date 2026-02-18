@@ -5,7 +5,7 @@
 let xp = parseInt(localStorage.getItem("xp")) || 0;
 let streak = parseInt(localStorage.getItem("streak")) || 0;
 let lastIndoorCompleted = localStorage.getItem("lastIndoorCompleted") || "";
-let lastOutdoorCompleted = localStorage.getItem("lastIndoorCompleted") || "";
+let lastOutdoorCompleted = localStorage.getItem("lastOutdoorCompleted") || "";
 let monthlyQuestCompleted = localStorage.getItem("MonthlyQuestCompletionDate") || "";
 let playerName = localStorage.getItem("playerName") || "";
 let indoorBonusClaimedDate = localStorage.getItem("indoorBonusClaimedDate") || "";
@@ -333,6 +333,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
