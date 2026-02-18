@@ -96,6 +96,7 @@ function completeQuest(type) {
  
   addXP(10);
   document.getElementById(type + "-btn").disabled = true;
+  document.getElementById(type + "-btn").innerText = "Complete ✨";
  
   lastCompleted = today;
   localStorage.setItem("lastCompleted", today);
@@ -269,6 +270,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
