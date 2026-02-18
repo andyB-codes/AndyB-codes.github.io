@@ -32,7 +32,7 @@ const dailyQuests = [
       title: "Potion of Restoration – Hot tub ritual.", description: "The High Alchemist insists that mana cannot regenerate without sacred water immersion.", bonus: "Take the Kindle and read a chapter."
     },
     outdoor: {
-      title: "Colour Hunt – Find 3 colours outside.", description: "The world hides enchantments in plain sight.", bonus: "Take a photo of each item, and give it a fantasy name."
+      title: "Colour Hunt – Find 3 objects outside.", description: "The Chief Healer requires one blue item, one tiny item, and one oddly shaped item for her concoction.", bonus: "Take a photo of each item, and give it a fantasy name."
     }
   },
   {
@@ -40,7 +40,7 @@ const dailyQuests = [
       title: "Drawer of Destiny – Clear one small drawer.", description: "Clutter spirits weaken resolve. Today you banish them.", bonus: "Take before and after photos, and then present them with dramatic music."
     },
     outdoor: {
-      title: "Left-Turn Rule – Take one unexpected turn.", decription: "Heros do not always follow the well worn path.", bonus: "Discover something unexpected... even if its just an unexpected fence!"
+      title: "Left-Turn Rule – Go for a drive and take one unexpected turn.", decription: "Heros do not always follow the well worn path.", bonus: "Discover something unexpected... even if its just an unexpected fence!"
     }
   }
 ];
@@ -357,6 +357,7 @@ determineCurrentQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
