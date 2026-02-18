@@ -73,7 +73,7 @@ nav {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* INTRO SCREEN */
@@ -139,6 +139,7 @@ nav {
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
 
 
 
