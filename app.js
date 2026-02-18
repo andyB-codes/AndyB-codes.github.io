@@ -163,6 +163,8 @@ function disableBonusButton(type){
 // =======================
  
 function loadMonthly() {
+  let date = new Date().getDate();
+  let month = monthNames[date.getMonth()];
   const container = document.getElementById("monthly-container");
   container.innerHTML = "";
  
@@ -178,6 +180,9 @@ function loadMonthly() {
     `;
     container.appendChild(card);
   });
+  if (month === monthlyQuestCompleted){
+   disableQuestButton("monthlyQuestButton");
+  }
 }
  
 function completeMonthly(index) {
@@ -188,7 +193,8 @@ function completeMonthly(index) {
  
   addXP(monthlyQuests[index].xp);
 
-  localStorage.setItem("MonthlyQuestCompletionDate", month);
+  monthlyQuestCompleted = month;
+  localStorage.setItem("MonthlyQuestCompletionDate", monthlyQuestCompled);
   disableQuestButton("monthlyQuestButton");
  
 }
@@ -309,6 +315,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
