@@ -382,6 +382,7 @@ determineCurrentQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+createEmbers()
 
 
 
