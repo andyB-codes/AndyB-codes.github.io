@@ -76,6 +76,47 @@ nav {
   display: none;
 }
 
+/* INTRO SCREEN */
+ 
+.intro {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, #1f2a24, #2f3e2f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 1000;
+}
+ 
+.intro-box {
+  text-align: center;
+  padding: 30px;
+  max-width: 400px;
+}
+ 
+.intro input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  width: 80%;
+}
+ 
+.intro button {
+  margin-top: 15px;
+  background: #7da87d;
+}
+ 
+.fade-in {
+  animation: fade 1.5s ease forwards;
+}
+ 
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Level Up Overlay */
 #levelup-overlay {
   position: fixed;
@@ -98,3 +139,4 @@ nav {
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
