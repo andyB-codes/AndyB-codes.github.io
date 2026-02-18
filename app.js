@@ -29,50 +29,74 @@ const monthNames = ["January","February","March","April","May","June","July","Au
 const dailyQuests = [
   {
     indoor: {
-      title: "Potion of Restoration – Hot tub ritual.", description: "The High Alchemist insists that mana cannot regenerate without sacred water immersion.", bonus: "Take the Kindle and read a chapter."
+      title: "Potion of Restoration – Hot tub ritual.", 
+      description: "The High Alchemist insists that mana cannot regenerate without sacred water immersion.", 
+      bonus: "Take the Kindle and read a chapter."
     },
     outdoor: {
-      title: "Colour Hunt – Find 3 objects outside.", description: "The Chief Healer requires one blue item, one tiny item, and one oddly shaped item for her concoction.", bonus: "Take a photo of each item, and give it a fantasy name."
+      title: "Colour Hunt – Find 3 objects outside.",
+      description: "The Chief Healer requires one blue item, one tiny item, and one oddly shaped item for her concoction.",
+      bonus: "Take a photo of each item, and give it a fantasy name."
     }
   },
   {
     indoor: {
-      title: "Drawer of Destiny – Clear one small drawer.", description: "Clutter spirits weaken resolve. Today you banish them.", bonus: "Take before and after photos, and then present them with dramatic music."
+      title: "Drawer of Destiny – Clear one small drawer.",
+      description: "Clutter spirits weaken resolve. Today you banish them.",
+      bonus: "Take before and after photos, and then present them with dramatic music."
     },
     outdoor: {
-      title: "Left-Turn Rule – Go for a drive and take one unexpected turn.", decription: "Heros do not always follow the well worn path.", bonus: "Discover something unexpected... even if its just an unexpected fence!"
+      title: "Left-Turn Rule – Go for a drive and take one unexpected turn.", 
+      decription: "Heros do not always follow the well worn path.", 
+      bonus: "Discover something unexpected... even if its just an unexpected fence!"
     }
   },
   {
     indoor: {
-      title: "The Jar of Light – Write down 5 good things from yesterday, no matter how small, and keep them safe.", description: "An old wizard once said: “Joy hoarded becomes resilience.” You are now the Keeper of Small Joys.", bonus: "Decorate the Jar."
+      title: "The Jar of Light – Write down 5 good things from yesterday, no matter how small, and keep them safe.", 
+      description: "An old wizard once said: “Joy hoarded becomes resilience.” You are now the Keeper of Small Joys.", 
+      bonus: "Decorate the Jar."
     },
     outdoor: {
-      title: "Sky Ritual – Step outside for 5 minutes and look at the sky. That’s it...", decription: "The sky is the oldest spell in the world. It works even when you don’t believe in it.", bonus: "Describe the shape of one cloud."
+      title: "Sky Ritual – Step outside for 5 minutes and look at the sky. That’s it...", 
+      decription: "The sky is the oldest spell in the world. It works even when you don’t believe in it.", 
+      bonus: "Describe the shape of one cloud."
     }
   },
   {
     indoor: {
-      title: "The Art of Whimsy – Create a ridiculous object, a silly hat, a tiny sign for a plant, a handwritten speel scroll...", description: "The Realm thrives on unnecessary whimsy.", bonus: "Wear or use it for at least 10 minutes."
+      title: "The Art of Whimsy – Create a ridiculous object, a silly hat, a tiny sign for a plant, a handwritten speel scroll...", 
+      description: "The Realm thrives on unnecessary whimsy.", 
+      bonus: "Wear or use it for at least 10 minutes."
     },
     outdoor: {
-      title: "Purchase of Purpose – Go to a small local shop and buy one item purely to improve the house atmosphere (plant, candle, weird mug, flowers).", decription: "Every stronghold needs aesthetic upgrades.", bonus: "Present it to you like unveiling a royal artefact."
+      title: "Purchase of Purpose – Go to a small local shop and buy one item purely to improve the house atmosphere (plant, candle, weird mug, flowers).", 
+      decription: "Every stronghold needs aesthetic upgrades.", 
+      bonus: "Present it to you like unveiling a royal artefact."
     }
   },
   {
     indoor: {
-      title: "The Bard – Learn a new song on the Ukelele", description: "The King and Queen wish to be entertained with a song.", bonus: "Perform the song as if at a grand ball."
+      title: "The Bard – Learn a new song on the Ukelele", 
+      description: "The King and Queen wish to be entertained with a song.", 
+      bonus: "Perform the song as if at a grand ball."
     },
     outdoor: {
-      title: "Scouting New Teritory – Drive or walk somewhere calm (not city centre). Sit for 5–10 minutes.", decription: "Scouts must observe new territory.", bonus: "Take time to be mindful and really listen, touch and see."
+      title: "Scouting New Teritory – Drive or walk somewhere calm (not city centre). Sit for 5–10 minutes.", 
+      decription: "Scouts must observe new territory.",
+      bonus: "Take time to be mindful and really listen, touch and see."
     }
   },
   {
     indoor: {
-      title: "The Day of Indulgent Magic – One hour of guilt-free comfort activity. No productivity allowed.", description: "Rest is not laziness. It is spell recovery.", bonus: "Leave your phone in another room"
+      title: "The Day of Indulgent Magic – One hour of guilt-free comfort activity. No productivity allowed.",
+      description: "Rest is not laziness. It is spell recovery.",
+      bonus: "Leave your phone in another room"
     },
     outdoor: {
-      title: "Nature Offering – Place a small natural object somewhere pretty (a leaf balanced on a rock, etc.).", decription: "You must leave signs to guide the woodland spirits.", bonus: "Whisper a ridiculous prophecy while doing it."
+      title: "Nature Offering – Place a small natural object somewhere pretty (a leaf balanced on a rock, etc.).",
+      decription: "You must leave signs to guide the woodland spirits.",
+      bonus: "Whisper a ridiculous prophecy while doing it."
     }
   },
  {
@@ -89,9 +113,9 @@ const dailyQuests = [
 },
 {
   indoor: {
-    title: "Song of the Hearth – Learn 30 seconds of a new song on the ukulele.",
-    description: "Bards say music stitches the soul back together, one chord at a time.",
-    bonus: "Perform it with unnecessary drama."
+    title: "Painting of the Hearth – Paint the view from the bedroom.",
+    description: "'The image of bliss is that of the bedroom' The local prophet has foretold the images potency in times of darkness",
+    bonus: "Include two forms of wildlife in the picture."
   },
   outdoor: {
     title: "The Hidden Sigil – Find a symbol or pattern in nature.",
@@ -778,6 +802,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
