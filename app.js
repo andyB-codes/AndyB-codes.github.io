@@ -381,9 +381,10 @@ function createEmbers() {
 
 determineCurrentQuest();
 loadMonthly();
-updateUI();
 checkIntro();
+updateUI();
 createEmbers()
+
 
 
 
