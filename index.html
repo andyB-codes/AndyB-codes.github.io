@@ -12,6 +12,21 @@
 </head>
 <body>
 
+<div id="intro-screen" class="intro hidden">
+	<div class="intro-box">
+		<div id="name-entry">
+			<h2> Welcome traveller, before we begin... </h2>
+			<p> What is your name? </p>
+			<input type="text" id="name-input" placeholder="Enter your name">
+			<button onclick="startIntro()">Begin</button>
+		</div>
+			
+		<div id="intro-text" class="hidden">
+			<h2 id="intro-line></h2>
+		</div>
+	</div>
+</div>
+  
 <div class="app">
 
   <header>
@@ -72,3 +87,4 @@
 <script src="app.js"></script>
 </body>
 </html>
+
