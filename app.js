@@ -93,7 +93,14 @@ function triggerLevelUp(level) {
  
 function completeQuest(type) {
   const today = new Date().toDateString();
- 
+
+  var lastCompleted = "";
+
+  if (type === "indoor"){
+   lastCompleted = lastIndoorCompleted;
+  } else {
+   lastCompleted = lastOutdoorCompleted;
+  }
   if (lastCompleted === today) return;
  
   addXP(10);
@@ -290,6 +297,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
