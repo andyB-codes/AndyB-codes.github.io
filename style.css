@@ -160,7 +160,7 @@ nav {
   bottom: -20px;
   width: 6px;
   height: 6px;
-  background: radial-gradient(circle, #c6aaff 0%, #7d5cff 60%, transparent 80%);
+  background: radial-gradient(circle, #fff5cc 0%, #ffd700 60%, transparent 80%);
   border-radius: 50%;
   opacity: 0.8;
   animation: floatUp linear infinite;
@@ -176,6 +176,7 @@ nav {
     opacity: 0;
   }
 }
+
 
 
 
