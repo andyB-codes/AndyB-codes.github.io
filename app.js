@@ -240,7 +240,7 @@ function showScreen(screen) {
 // =======================
  
 function loadDailyQuest() {
-  const date = new Date().getDate()
+  const date = new Date();
   const todayIndex = date % dailyQuests.length;
   const today = dailyQuests[todayIndex];
  
@@ -315,6 +315,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
