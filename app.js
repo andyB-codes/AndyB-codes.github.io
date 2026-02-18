@@ -6,6 +6,7 @@ let xp = parseInt(localStorage.getItem("xp")) || 0;
 let streak = parseInt(localStorage.getItem("streak")) || 0;
 let lastIndoorCompleted = localStorage.getItem("lastIndoorCompleted") || "";
 let lastOutdoorCompleted = localStorage.getItem("lastIndoorCompleted") || "";
+let monthlyQuestCompleted = localStorage.getItem("MonthlyQuestCompletionDate") || "";
 let playerName = localStorage.getItem("playerName") || "";
 let indoorBonusClaimedDate = localStorage.getItem("indoorBonusClaimedDate") || "";
 let outdoorBonusClaimedDate = localStorage.getItem("outdoorBonusClaimedDate") || "";
@@ -39,11 +40,6 @@ const monthlyQuests = [
     description: "Take the train one stop and return.",
     xp: 50
   },
- {
-    title: "The Station of New Beginnings",
-    description: "Take the train one stop and return.",
-    xp: 50
-  }
 ];
  
 // =======================
@@ -55,11 +51,11 @@ function getLevel(xp) {
 }
  
 function getTitle(level) {
-  if (level >= 20) return "Archmage of Becoming";
-  if (level >= 12) return "Wayfarer of Quiet Courage";
-  if (level >= 8) return "Gentle Pathfinder";
-  if (level >= 5) return "Hearth Guardian";
-  if (level >= 3) return "Keeper of Small Joys";
+  if (level >= 160) return "Archmage of Becoming";
+  if (level >= 80) return "Wayfarer of Quiet Courage";
+  if (level >= 40) return "Gentle Pathfinder";
+  if (level >= 20) return "Hearth Guardian";
+  if (level >= 10) return "Keeper of Small Joys";
   return "Resting Adventurer";
 }
  
@@ -297,6 +293,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
