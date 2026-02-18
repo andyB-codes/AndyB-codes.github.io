@@ -264,6 +264,9 @@ function determineCurrentQuest(){
 
 
   localStorage.setItem("lastLoginDate",date);
+
+  loadDailyQuest()
+ 
 }
  
 function loadDailyQuest() {
@@ -350,10 +353,11 @@ function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
-loadDailyQuest();
+determineCurrentQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
