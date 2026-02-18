@@ -353,10 +353,36 @@ function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
+// Aesthetics - Embers
+
+function createEmbers() {
+  const container = document.querySelector(".embers");
+  const emberCount = 25; // adjust density here
+
+  for (let i = 0; i < emberCount; i++) {
+    const ember = document.createElement("span");
+
+    const size = Math.random() * 6 + 4;
+    ember.style.width = size + "px";
+    ember.style.height = size + "px";
+
+    ember.style.left = Math.random() * 100 + "vw";
+
+    const duration = Math.random() * 10 + 8;
+    ember.style.animationDuration = duration + "s";
+
+    ember.style.animationDelay = Math.random() * 10 + "s";
+
+    container.appendChild(ember);
+  }
+}
+
+
 determineCurrentQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
