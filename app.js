@@ -181,7 +181,7 @@ function loadMonthly() {
     container.appendChild(card);
   });
   if (month === monthlyQuestCompleted){
-   disableQuestButton("monthlyQuestButton");
+   disableQuestButton("monthlyQuest");
   }
 }
  
@@ -195,7 +195,7 @@ function completeMonthly(index) {
 
   monthlyQuestCompleted = month;
   localStorage.setItem("MonthlyQuestCompletionDate", monthlyQuestCompleted);
-  disableQuestButton("monthlyQuestButton");
+  disableQuestButton("monthlyQuest");
  
 }
  
@@ -315,6 +315,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
