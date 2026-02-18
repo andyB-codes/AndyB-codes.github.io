@@ -10,6 +10,13 @@ let monthlyQuestCompleted = localStorage.getItem("MonthlyQuestCompletionDate") |
 let playerName = localStorage.getItem("playerName") || "";
 let indoorBonusClaimedDate = localStorage.getItem("indoorBonusClaimedDate") || "";
 let outdoorBonusClaimedDate = localStorage.getItem("outdoorBonusClaimedDate") || "";
+
+
+// =======================
+// MONTH DATA
+// =======================
+
+const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"]
  
 // =======================
 // QUEST DATA
@@ -165,7 +172,7 @@ function loadMonthly() {
     card.innerHTML = `
       <h3>${quest.title}</h3>
       <p>${quest.description}</p>
-      <button onclick="completeMonthly(${index})">
+      <button id="monthlyQuest-btn" onclick="completeMonthly(${index})">
         Complete (+${quest.xp} XP)
       </button>
     `;
@@ -174,7 +181,16 @@ function loadMonthly() {
 }
  
 function completeMonthly(index) {
+  let date = new Date().getDate();
+  let month = monthNames[date.getMonth()];
+
+  if (month === monthlyQuestCompleted) return;
+ 
   addXP(monthlyQuests[index].xp);
+
+  localStorage.setItem("MonthlyQuestCompletionDate", month);
+  disableQuestButton("monthlyQuestButton");
+ 
 }
  
 // =======================
@@ -293,6 +309,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
