@@ -98,7 +98,7 @@ function completeQuest(type) {
   const today = new Date().toDateString();
 
   var lastCompleted = "";
-  let capType = capitalizeFirstLetter(val);
+  let capType = capitalizeFirstLetter(type);
 
   if (type === "indoor"){
    lastCompleted = lastIndoorCompleted;
@@ -325,6 +325,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
