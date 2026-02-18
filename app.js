@@ -6,6 +6,7 @@ let xp = parseInt(localStorage.getItem("xp")) || 0;
 let streak = parseInt(localStorage.getItem("streak")) || 0;
 let lastCompleted = localStorage.getItem("lastCompleted") || "";
 let playerName = localStorage.getItem("playerName") || "";
+let bonusClaimedDate = localStorage.getItem("bonusClaimedDate") || "";
  
 // =======================
 // QUEST DATA
@@ -14,24 +15,29 @@ let playerName = localStorage.getItem("playerName") || "";
 const dailyQuests = [
   {
     indoor: {
-      title: "Potion of Restoration – Hot tub ritual.", description: "The High Alchemist insists that mana cannot regenerate without sacred water immersion", bonus: "Take the Kindle and read a chapter"
+      title: "Potion of Restoration – Hot tub ritual.", description: "The High Alchemist insists that mana cannot regenerate without sacred water immersion.", bonus: "Take the Kindle and read a chapter."
     },
     outdoor: {
-      title: "Colour Hunt – Find 3 colours outside.", description: "The world hides enchantments in plain sight", bonus: "Take a photo of each item, and give it a fantasy name."
+      title: "Colour Hunt – Find 3 colours outside.", description: "The world hides enchantments in plain sight.", bonus: "Take a photo of each item, and give it a fantasy name."
     }
   },
   {
     indoor: {
-      title: "Drawer of Destiny – Clear one small drawer.", description: "Clutter spirits weaken resolve. Today you banish them.", bonus: "Take before and after photos, and then present them with dramatic music"
+      title: "Drawer of Destiny – Clear one small drawer.", description: "Clutter spirits weaken resolve. Today you banish them.", bonus: "Take before and after photos, and then present them with dramatic music."
     },
     outdoor: {
-      title: "Left-Turn Rule – Take one unexpected turn.", decription: "Heros do not always follow the well worn path", bonus: "Discover something unexpected... even if its just an unexpected fence!"
+      title: "Left-Turn Rule – Take one unexpected turn.", decription: "Heros do not always follow the well worn path.", bonus: "Discover something unexpected... even if its just an unexpected fence!"
     }
   }
 ];
  
 const monthlyQuests = [
   {
+    title: "The Station of New Beginnings",
+    description: "Take the train one stop and return.",
+    xp: 50
+  },
+ {
     title: "The Station of New Beginnings",
     description: "Take the train one stop and return.",
     xp: 50
@@ -101,7 +107,27 @@ function completeQuest(type) {
 }
  
 function addBonus() {
+  const today = new Date().toDateString();
+
+  if (bonusClaimedDate === today){
+    return;
+  }
+ 
   addXP(5);
+
+  bonusClaimedDate = today;
+  localStorage.setItem("bonusClaimedDate",today);
+
+  disableBonusButton();
+ 
+}
+
+function disableBonusButton(){
+  const btn = document.getElementByID("bonus-btn");
+  if(!btn) return;
+ 
+  btn.disabled = true;
+  btn.innerText = "Bonus Claimed ✨";
 }
  
 // =======================
@@ -171,11 +197,17 @@ function showScreen(screen) {
 // =======================
  
 function loadDailyQuest() {
-  const todayIndex = new Date().getDate() % dailyQuests.length;
+  const date = new Date().getDate()
+  const todayIndex = date % dailyQuests.length;
   const today = dailyQuests[todayIndex];
  
   document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <h4>Bonus points: ${today.indoor.bonus}</h4> <p>${today.indoor.description}</p>`;
   document.getElementById("outdoor-quest").innerHTML = `<h3>${today.outdoor.title}</h3> <h4>Bonus points: ${today.outdoor.bonus}</h4> <p>${today.outdoor.description}</p>`;
+
+  if (bonusClaimedDate === date) {
+    disableBonusButton();
+  }
+ 
 }
 
 // =======================
@@ -237,6 +269,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
