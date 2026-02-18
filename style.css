@@ -127,6 +127,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .levelup-box {
@@ -135,6 +136,7 @@ nav {
   border-radius: 20px;
   text-align: center;
   animation: pop 0.4s ease;
+  z-index: 3;
 }
 
 @keyframes pop {
@@ -176,6 +178,7 @@ nav {
     opacity: 0;
   }
 }
+
 
 
 
