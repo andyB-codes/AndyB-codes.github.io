@@ -344,6 +344,7 @@ function runIntroSequence() {
  
     index++;
     setTimeout(showNextLine, 2500);
+    document.getElementById("main-title").innerText = playerName + "'s Quest Log";
   }
  
   showNextLine();
@@ -384,6 +385,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
