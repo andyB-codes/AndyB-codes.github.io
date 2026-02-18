@@ -109,7 +109,7 @@ function completeQuest(type) {
   addXP(10);
  
   lastCompleted = today;
-  localStorage.setItem("lastCompleted", today);
+  localStorage.setItem("last" + type + "Completed", today);
 
   
   if (lastIndoorCompleted === today || lastOutdoorCompleted === today){
@@ -319,6 +319,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
