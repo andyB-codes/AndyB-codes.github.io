@@ -1,94 +1,173 @@
-// ===== QUEST DATA =====
-// Add more days easily by extending this array
-
-Const dailyQuests = [
+// =======================
+// STATE
+// =======================
+ 
+let xp = parseInt(localStorage.getItem("xp")) || 0;
+let streak = parseInt(localStorage.getItem("streak")) || 0;
+let lastCompleted = localStorage.getItem("lastCompleted") || "";
+let playerName = localStorage.getItem("playerName") || "";
+ 
+// =======================
+// QUEST DATA
+// =======================
+ 
+const dailyQuests = [
   {
-    Indoor: “Potion of Restoration – Hot tub ritual with music.”,
-    Outdoor: “Colour Hunt – Find one red, one tiny, one oddly shaped thing.”
+    indoor: "Potion of Restoration – Hot tub ritual.",
+    outdoor: "Colour Hunt – Find 3 colours outside."
   },
   {
-    Indoor: “Drawer of Destiny – Clear one small drawer.”,
-    Outdoor: “Left-Turn Rule – Take one unexpected path.”
-  },
-  {
-    Indoor: “Skill Fragment – 15 minutes of ukulele or sketching.”,
-    Outdoor: “Sit Somewhere New – 10 minutes observing.”
+    indoor: "Drawer of Destiny – Clear one small drawer.",
+    outdoor: "Left-Turn Rule – Take one unexpected turn."
   }
 ];
-
-// ===== PLAYER NAME VAR =====
-let playerName = localStorage.getItem("playerName") || "";
-
-// ===== STATE =====
-
-Let xp = parseInt(localStorage.getItem(“xp”)) || 0;
-
-// ===== XP SYSTEM =====
-
-Function getLevel(xp) {
-  Return Math.floor(Math.sqrt(xp) / 2) + 1;
+ 
+const monthlyQuests = [
+  {
+    title: "The Station of New Beginnings",
+    description: "Take the train one stop and return.",
+    xp: 50
+  }
+];
+ 
+// =======================
+// XP + LEVEL
+// =======================
+ 
+function getLevel(xp) {
+  return Math.floor(Math.sqrt(xp) / 2) + 1;
 }
-
-Function getTitle(level) {
-  If (level >= 20) return “Archmage of Becoming”;
-  If (level >= 12) return “Wayfarer of Quiet Courage”;
-  If (level >= 8) return “Gentle Pathfinder”;
-  If (level >= 5) return “Hearth Guardian”;
-  If (level >= 3) return “Keeper of Small Joys”;
-  Return “Resting Adventurer”;
+ 
+function getTitle(level) {
+  if (level >= 20) return "Archmage of Becoming";
+  if (level >= 12) return "Wayfarer of Quiet Courage";
+  if (level >= 8) return "Gentle Pathfinder";
+  if (level >= 5) return "Hearth Guardian";
+  if (level >= 3) return "Keeper of Small Joys";
+  return "Resting Adventurer";
 }
-
-Function addXP(amount) {
-  Xp += amount;
-  localStorage.setItem(“xp”, xp);
+ 
+function addXP(amount) {
+  const oldLevel = getLevel(xp);
+  xp += amount;
+  localStorage.setItem("xp", xp);
+  updateUI();
+ 
+  const newLevel = getLevel(xp);
+  if (newLevel > oldLevel) triggerLevelUp(newLevel);
+}
+ 
+function triggerLevelUp(level) {
+  document.getElementById("levelup-text").innerText =
+    `You are now Level ${level} – ${getTitle(level)}`;
+ 
+  document.getElementById("levelup-overlay").classList.remove("hidden");
+ 
+  const sound = document.getElementById("levelup-sound");
+  if (sound) sound.play();
+ 
+  setTimeout(() => {
+    document.getElementById("levelup-overlay").classList.add("hidden");
+  }, 2500);
+}
+ 
+// =======================
+// DAILY LOCK + STREAK
+// =======================
+ 
+function completeQuest(type) {
+  const today = new Date().toDateString();
+ 
+  if (lastCompleted === today) return;
+ 
+  addXP(10);
+  document.getElementById(type + "-btn").disabled = true;
+ 
+  lastCompleted = today;
+  localStorage.setItem("lastCompleted", today);
+ 
+  streak++;
+  localStorage.setItem("streak", streak);
+ 
   updateUI();
 }
-
-Function completeQuest(type) {
-  addXP(10);
-}
-
-Function addBonus() {
+ 
+function addBonus() {
   addXP(5);
 }
-
-// ===== UI =====
-
-Function updateUI() {
-  Const level = getLevel(xp);
-  Const nextLevelXP = Math.pow((level * 2), 2);
-
-  Document.getElementById(“total-xp”).innerText = xp;
-  Document.getElementById(“level-number”).innerText = level;
-  Document.getElementById(“title”).innerText = getTitle(level);
-  Document.getElementById(“level-info”).innerText =
-    `Level ${level} – ${getTitle(level)}`;
-
-  Const percent = (xp / nextLevelXP) * 100;
-  Document.getElementById(“xp-fill”).style.width = percent + “%”;
+ 
+// =======================
+// MONTHLY
+// =======================
+ 
+function loadMonthly() {
+  const container = document.getElementById("monthly-container");
+  container.innerHTML = "";
+ 
+  monthlyQuests.forEach((quest, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3>${quest.title}</h3>
+      <p>${quest.description}</p>
+      <button onclick="completeMonthly(${index})">
+        Complete (+${quest.xp} XP)
+      </button>
+    `;
+    container.appendChild(card);
+  });
 }
-
-// ===== SCREEN SWITCH =====
-
-Function showScreen(screen) {
-  Document.getElementById(“home-screen”).classList.add(“hidden”);
-  Document.getElementById(“character-screen”).classList.add(“hidden”);
-
-  If (screen === “home”) {
-    Document.getElementById(“home-screen”).classList.remove(“hidden”);
-  } else {
-    Document.getElementById(“character-screen”).classList.remove(“hidden”);
+ 
+function completeMonthly(index) {
+  addXP(monthlyQuests[index].xp);
+}
+ 
+// =======================
+// UI
+// =======================
+ 
+function updateUI() {
+  const level = getLevel(xp);
+  const nextLevelXP = Math.pow((level * 2), 2);
+ 
+  document.getElementById("total-xp").innerText = xp;
+  document.getElementById("level-number").innerText = level;
+  document.getElementById("title").innerText = getTitle(level);
+  document.getElementById("level-info").innerText =
+    `Level ${level} – ${getTitle(level)}`;
+  document.getElementById("streak-info").innerText =
+    `Harmony Days: ${streak}`;
+ 
+  const percent = (xp / nextLevelXP) * 100;
+  document.getElementById("xp-fill").style.width = percent + "%";
+ 
+  if (level >= 5) {
+    document.body.classList.add("forest-theme");
   }
 }
-
-// ===== LOAD TODAY’S QUEST =====
-
-Function loadDailyQuest() {
-  Const todayIndex = new Date().getDate() % dailyQuests.length;
-  Const today = dailyQuests[todayIndex];
-
-  Document.getElementById(“indoor-quest”).innerText = today.indoor;
-  Document.getElementById(“outdoor-quest”).innerText = today.outdoor;
+ 
+// =======================
+// NAVIGATION
+// =======================
+ 
+function showScreen(screen) {
+  document.getElementById("home-screen").classList.add("hidden");
+  document.getElementById("monthly-screen").classList.add("hidden");
+  document.getElementById("character-screen").classList.add("hidden");
+ 
+  document.getElementById(screen + "-screen").classList.remove("hidden");
+}
+ 
+// =======================
+// LOAD
+// =======================
+ 
+function loadDailyQuest() {
+  const todayIndex = new Date().getDate() % dailyQuests.length;
+  const today = dailyQuests[todayIndex];
+ 
+  document.getElementById("indoor-quest").innerText = today.indoor;
+  document.getElementById("outdoor-quest").innerText = today.outdoor;
 }
 
 // =======================
@@ -150,6 +229,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
