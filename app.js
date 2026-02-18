@@ -123,7 +123,7 @@ function addBonus() {
 }
 
 function disableBonusButton(){
-  const btn = document.getElementByID("bonus-btn");
+  const btn = document.getElementById("bonus-btn");
   if(!btn) return;
  
   btn.disabled = true;
@@ -269,6 +269,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
