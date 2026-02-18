@@ -226,6 +226,7 @@ function updateUI() {
     `Level ${level} – ${getTitle(level)}`;
   document.getElementById("streak-info").innerText =
     `Harmony Days: ${streak}`;
+  document.getElementById("main-title").innerText = playerName + "'s Quest Log";
  
   const percent = (xp / nextLevelXP) * 100;
   document.getElementById("xp-fill").style.width = percent + "%";
@@ -383,6 +384,7 @@ loadMonthly();
 updateUI();
 checkIntro();
 createEmbers()
+
 
 
 
