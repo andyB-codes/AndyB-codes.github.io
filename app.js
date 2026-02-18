@@ -97,14 +97,14 @@ function completeQuest(type) {
   if (lastCompleted === today) return;
  
   addXP(10);
-  document.getElementById(type + "-btn").disabled = true;
-  document.getElementById(type + "-btn").innerText = "Complete ✨";
  
   lastCompleted = today;
   localStorage.setItem("lastCompleted", today);
  
   streak++;
   localStorage.setItem("streak", streak);
+
+  disableQuestButton(type);
  
   updateUI();
 }
@@ -130,6 +130,14 @@ function addBonus(type) {
 
   disableBonusButton(type);
  
+}
+
+function disableQuestButton(type){
+  const btn = document.getElementById(type + "-btn");
+  if(!btn) return;
+ 
+  btn.disabled = true;
+  btn.innerText = "Completed ✨";
 }
 
 function disableBonusButton(type){
@@ -282,6 +290,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
