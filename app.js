@@ -13,8 +13,12 @@ let playerName = localStorage.getItem("playerName") || "";
  
 const dailyQuests = [
   {
-    indoor: {title: "Potion of Restoration – Hot tub ritual.", description: "blah"},
-    outdoor: {title: "Colour Hunt – Find 3 colours outside.", description: "blah"}
+    indoor: {
+      title: "Potion of Restoration – Hot tub ritual.", description: "blah"
+    },
+    outdoor: {
+      title: "Colour Hunt – Find 3 colours outside.", description: "blah"
+    }
   },
   {
     indoor: {title: "Drawer of Destiny – Clear one small drawer.", description: "blah"},
@@ -166,8 +170,8 @@ function loadDailyQuest() {
   const todayIndex = new Date().getDate() % dailyQuests.length;
   const today = dailyQuests[todayIndex];
  
-  document.getElementById("indoor-quest").innerHTML = '<h3>${today.indoor.title}</h3> <p>${today.indoor.description}</p>';
-  document.getElementById("outdoor-quest").innerinnerHTML = '<h3>${today.outdoor.title}</h3> <p>${today.outdoor.description}</p>';
+  document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <p>${today.indoor.description}</p>`;
+  document.getElementById("outdoor-quest").innerinnerHTML = `<h3>${today.outdoor.title}</h3> <p>${today.outdoor.description}</p>`;
 }
 
 // =======================
@@ -229,4 +233,5 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
