@@ -98,6 +98,7 @@ function completeQuest(type) {
   const today = new Date().toDateString();
 
   var lastCompleted = "";
+  let capType = capitalizeFirstLetter(val);
 
   if (type === "indoor"){
    lastCompleted = lastIndoorCompleted;
@@ -109,7 +110,7 @@ function completeQuest(type) {
   addXP(10);
  
   lastCompleted = today;
-  localStorage.setItem("last" + type + "Completed", today);
+  localStorage.setItem("last" + capType + "Completed", today);
 
   
   if (lastIndoorCompleted === today || lastOutdoorCompleted === today){
@@ -315,10 +316,16 @@ function runIntroSequence() {
   showNextLine();
 }
 
+
+function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
+
 loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
