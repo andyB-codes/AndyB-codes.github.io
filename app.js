@@ -252,11 +252,9 @@ function showScreen(screen) {
 // =======================
 
 function determineCurrentQuest(){
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
   const date = new Date().toDateString();
 
-  if (lastLoginDate === d){
+  if (lastLoginDate === date){
   } else {
     if (lastCompletedQuest > currentQuest){
       currentQuest++;
@@ -359,6 +357,7 @@ determineCurrentQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
