@@ -10,6 +10,7 @@ let monthlyQuestCompleted = localStorage.getItem("MonthlyQuestCompletionDate") |
 let playerName = localStorage.getItem("playerName") || "";
 let indoorBonusClaimedDate = localStorage.getItem("indoorBonusClaimedDate") || "";
 let outdoorBonusClaimedDate = localStorage.getItem("outdoorBonusClaimedDate") || "";
+let dateBeganQuest = localStorage.getItem("dateBeganQuest") || "YetToBegin";
 
 
 // =======================
@@ -252,6 +253,13 @@ function loadDailyQuest() {
   document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <h4>Bonus points: ${today.indoor.bonus}</h4> <p>${today.indoor.description}</p>`;
   document.getElementById("outdoor-quest").innerHTML = `<h3>${today.outdoor.title}</h3> <h4>Bonus points: ${today.outdoor.bonus}</h4> <p>${today.outdoor.description}</p>`;
 
+
+  if (lastIndoorCompleted === date.toDateString()) {
+    disableQuestButton("indoor");
+  }
+  if (lastOutdoorCompleted === date.toDateString()){
+   disableQuestButton("outdoor");
+  }
   if (indoorBonusClaimedDate === date.toDateString()) {
     disableBonusButton("indoor");
   }
@@ -325,6 +333,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
