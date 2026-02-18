@@ -10,7 +10,10 @@ let monthlyQuestCompleted = localStorage.getItem("MonthlyQuestCompletionDate") |
 let playerName = localStorage.getItem("playerName") || "";
 let indoorBonusClaimedDate = localStorage.getItem("indoorBonusClaimedDate") || "";
 let outdoorBonusClaimedDate = localStorage.getItem("outdoorBonusClaimedDate") || "";
-let dateBeganQuest = localStorage.getItem("dateBeganQuest") || "YetToBegin";
+let currentQuest = localStorage.getItem("currentQuestNumber") || 0;
+let lastCompletedQuest = localStorage.getItem("lastCompletedQuest") || 0;
+let lastLoginDate = localStorage.getItem("lastLoginDate") || "";
+
 
 
 // =======================
@@ -112,6 +115,9 @@ function completeQuest(type) {
  
   lastCompleted = today;
   localStorage.setItem("last" + capType + "Completed", today);
+
+  lastCompletedQuest = currentQuest;
+  localStorage.setItem("lastCompletedQuest",lastCompletedQuest);
 
   
   if (lastIndoorCompleted === today || lastOutdoorCompleted === today){
@@ -244,11 +250,26 @@ function showScreen(screen) {
 // =======================
 // LOAD
 // =======================
+
+function determineCurrentQuest(){
+  const date = new Date().toDateString();
+
+  if (lastLoginDate === date){
+  } else {
+    if (lastCompletedQuest > currentQuest){
+      currentQuest++;
+      localStorage.setItem("currentQuest",currentQuest);
+    }
+  }
+
+
+  localStorage.setItem("lastLoginDate",date);
+}
  
 function loadDailyQuest() {
   const date = new Date();
-  const todayIndex = date % dailyQuests.length;
-  const today = dailyQuests[todayIndex];
+  
+  const today = dailyQuests[currentQuest];
  
   document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <h4>Bonus points: ${today.indoor.bonus}</h4> <p>${today.indoor.description}</p>`;
   document.getElementById("outdoor-quest").innerHTML = `<h3>${today.outdoor.title}</h3> <h4>Bonus points: ${today.outdoor.bonus}</h4> <p>${today.outdoor.description}</p>`;
@@ -333,6 +354,7 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
 
