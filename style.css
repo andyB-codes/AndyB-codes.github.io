@@ -127,10 +127,6 @@ nav {
   align-items: center;
 }
 
-.hidden {
-  display: none !important;
-}
-
 .levelup-box {
   background: white;
   padding: 30px;
@@ -143,5 +139,6 @@ nav {
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
 
 
