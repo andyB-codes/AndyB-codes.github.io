@@ -17,7 +17,7 @@ Const dailyQuests = [
 ];
 
 // ===== PLAYER NAME VAR =====
-let playerName = localStorage.getItem("playerName") || ""
+let playerName = localStorage.getItem("playerName") || "";
 
 // ===== STATE =====
 
@@ -150,5 +150,6 @@ loadDailyQuest();
 loadMonthly();
 updateUI();
 checkIntro();
+
 
 
