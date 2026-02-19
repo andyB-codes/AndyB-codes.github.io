@@ -47,7 +47,7 @@ const dailyQuests = [
     },
     outdoor: {
       title: "Left-Turn Rule – Go for a drive and take one unexpected turn.", 
-      decription: "Heros do not always follow the well worn path.", 
+      description: "Heros do not always follow the well worn path.", 
       bonus: "Discover something unexpected... even if its just an unexpected fence!"
     }
   },
@@ -59,7 +59,7 @@ const dailyQuests = [
     },
     outdoor: {
       title: "Sky Ritual – Step outside for 5 minutes and look at the sky. That’s it...", 
-      decription: "The sky is the oldest spell in the world. It works even when you don’t believe in it.", 
+      description: "The sky is the oldest spell in the world. It works even when you don’t believe in it.", 
       bonus: "Describe the shape of one cloud."
     }
   },
@@ -71,7 +71,7 @@ const dailyQuests = [
     },
     outdoor: {
       title: "Purchase of Purpose – Go to a small local shop and buy one item purely to improve the house atmosphere (plant, candle, weird mug, flowers).", 
-      decription: "Every stronghold needs aesthetic upgrades.", 
+      description: "Every stronghold needs aesthetic upgrades.", 
       bonus: "Present it to you like unveiling a royal artefact."
     }
   },
@@ -83,7 +83,7 @@ const dailyQuests = [
     },
     outdoor: {
       title: "Scouting New Teritory – Drive or walk somewhere calm (not city centre). Sit for 5–10 minutes.", 
-      decription: "Scouts must observe new territory.",
+      description: "Scouts must observe new territory.",
       bonus: "Take time to be mindful and really listen, touch and see."
     }
   },
@@ -95,7 +95,7 @@ const dailyQuests = [
     },
     outdoor: {
       title: "Nature Offering – Place a small natural object somewhere pretty (a leaf balanced on a rock, etc.).",
-      decription: "You must leave signs to guide the woodland spirits.",
+      description: "You must leave signs to guide the woodland spirits.",
       bonus: "Whisper a ridiculous prophecy while doing it."
     }
   },
@@ -802,6 +802,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
