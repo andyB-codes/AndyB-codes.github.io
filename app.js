@@ -292,7 +292,7 @@ function determineCurrentQuest(){
  
 }
  
-function loadDailyQuest() {
+async function loadDailyQuest() {
   const date = new Date();
   const todayString = date.toDateString();
 
@@ -421,6 +421,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
