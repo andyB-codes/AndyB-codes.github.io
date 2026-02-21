@@ -33,6 +33,41 @@ let lastCompletedQuest = localStorage.getItem("lastCompletedQuest") || 0;
 let lastLoginDate = localStorage.getItem("lastLoginDate") || "";
 
 
+// =======================
+// EVENT LISTENERS
+// =======================
+document.getElementById("startIntro").addEventListener("click", () => {
+  startIntro();
+});
+
+document.getElementById("indoor-btn").addEventListener("click", () => {
+  completeQuest('indoor');
+});
+
+document.getElementById("indoor-bonus-btn").addEventListener("click", () => {
+  addBonus('indoor');
+});
+
+document.getElementById("outdoor-btn").addEventListener("click", () => {
+  completeQuest('outdoor');
+});
+
+document.getElementById("outdoor-bonus-btn").addEventListener("click", () => {
+  addBonus('outdoor');
+});
+
+document.getElementById("showHome").addEventListener("click", () => {
+  showScreen('home');
+});
+
+document.getElementById("showMonthly").addEventListener("click", () => {
+  showScreen('monthly');
+});
+  
+document.getElementById("showCharacter").addEventListener("click", () => {
+  showScreen('character');
+});
+
 
 // =======================
 // MONTH DATA
@@ -424,6 +459,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
