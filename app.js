@@ -495,6 +495,8 @@ async function loadQuests() {
   const now = new Date();
   const month = now.toISOString().slice(0, 7);
 
+  console.log("Looking for month:", month);
+
   const q = query(
     collection(db, "months", month, "quests"),
     orderBy("day")
@@ -846,6 +848,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
