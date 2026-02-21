@@ -294,10 +294,23 @@ function determineCurrentQuest(){
  
 function loadDailyQuest() {
   const date = new Date();
+  const todayString = date.toDateString();
 
-  const quests = loadQuests();
-  
-  const today = quests[currentQuest];
+  // 1️⃣ Load quests from Firebase
+  const month = date.toISOString().slice(0, 7); // "2026-02"
+  const q = query(
+    collection(db, "months", month, "quests"),
+    orderBy("day")
+  );
+  const snapshot = await getDocs(q);
+
+  const quests = [];
+  snapshot.forEach(doc => quests.push(doc.data()));
+
+  if (quests.length === 0) {
+    console.warn("No quests found for this month!");
+    return;
+  }
  
   document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <h4>Bonus points: ${today.indoor.bonus}</h4> <p>${today.indoor.description}</p>`;
   document.getElementById("outdoor-quest").innerHTML = `<h3>${today.outdoor.title}</h3> <h4>Bonus points: ${today.outdoor.bonus}</h4> <p>${today.outdoor.description}</p>`;
@@ -408,6 +421,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
