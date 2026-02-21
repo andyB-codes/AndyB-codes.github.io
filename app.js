@@ -1,3 +1,21 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { 
+  getFirestore, 
+  collection, 
+  getDocs, 
+  query, 
+  orderBy 
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB3zNygolNpOsNWnPBVbAY8lIvNc_ZfL0w",
+  authDomain: "heroquestmasteradmin.firebaseapp.com",
+  projectId: "heroquestmasteradmin",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 // =======================
 // STATE
 // =======================
@@ -469,6 +487,32 @@ const monthlyQuests = [
     xp: 50
   },
 ];
+
+// =======================
+// LOAD QUESTS
+// =======================
+async function loadQuests() {
+  const now = new Date();
+  const month = now.toISOString().slice(0, 7);
+
+  const q = query(
+    collection(db, "months", month, "quests"),
+    orderBy("day")
+  );
+
+  const snapshot = await getDocs(q);
+
+  const quests = [];
+
+  snapshot.forEach(doc => {
+    quests.push(doc.data());
+  });
+
+  console.log("Loaded quests:", quests);
+
+  return quests;
+}
+
  
 // =======================
 // XP + LEVEL
@@ -796,12 +840,13 @@ function createEmbers() {
   }
 }
 
-
+loadQuests();
 determineCurrentQuest();
 loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
