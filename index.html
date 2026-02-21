@@ -18,7 +18,7 @@
 			<h2> Welcome traveller, before we begin... </h2>
 			<p> What is your name? </p>
 			<input type="text" id="name-input" placeholder="Enter your name">
-			<button onclick="startIntro()">Begin</button>
+			<button id="startIntro">Begin</button>
 		</div>
 			
 		<div id="intro-text" class="hidden">
@@ -44,15 +44,15 @@
     <div class="card">
       <h2>🌿 Indoor Quest</h2>
       <p id="indoor-quest"></p>
-      <button id="indoor-btn" onclick="completeQuest('indoor')">Complete (+10 XP)</button>
-      <button id="indoor-bonus-btn" class="bonus" onclick="addBonus('indoor')">Bonus XP (+5)</button>
+      <button id="indoor-btn">Complete (+10 XP)</button>
+      <button id="indoor-bonus-btn" class="bonus">Bonus XP (+5)</button>
     </div>
 
     <div class="card">
       <h2>🌲 Outdoor Quest</h2>
       <p id="outdoor-quest"></p>
-      <button id="outdoor-btn" onclick="completeQuest('outdoor')">Complete (+10 XP)</button>
-	<button id="outdoor-bonus-btn" class="bonus" onclick="addBonus('outdoor')">Bonus XP (+5)</button>
+      <button id="outdoor-btn">Complete (+10 XP)</button>
+	<button id="outdoor-bonus-btn" class="bonus">Bonus XP (+5)</button>
     </div>
   </main>
 
@@ -70,9 +70,9 @@
   </section>
 
   <nav>
-    <button onclick="showScreen('home')">Home</button>
-    <button onclick="showScreen('monthly')">Monthly</button>
-    <button onclick="showScreen('character')">Character</button>
+    <button id="showHome" >Home</button>
+    <button id="showMonthly" >Monthly</button>
+    <button id="showCharacter" >Character</button>
   </nav>
 
 </div>
@@ -90,6 +90,7 @@
 <script type="module" src="app.js"></script>
 </body>
 </html>
+
 
 
 
