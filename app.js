@@ -563,15 +563,18 @@ function triggerEmberBurst() {
 // =======================
 
 function triggerShimmer(el) {
-  // Reset shimmer
-  el.classList.remove("quest-shimmer");
-  void el.offsetWidth;
-  el.classList.add("quest-shimmer");
+  const shimmer = document.createElement("span");
+  shimmer.classList.add("shimmer-layer");
+  el.appendChild(shimmer);
 
-  // Add glow pulse
+  // Glow pulse
   el.classList.remove("warm-glow");
   void el.offsetWidth;
   el.classList.add("warm-glow");
+
+  setTimeout(() => {
+    shimmer.remove();
+  }, 1800);
 }
 
 
@@ -584,6 +587,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
