@@ -52,6 +52,7 @@ header h1 {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   margin: 16px 0;
+  transition: box-shadow 0.3s ease;
 }
 
 button {
@@ -267,6 +268,7 @@ nav {
 .fade-transition.fade-out {
   opacity: 0;
 }
+
 
 
 
