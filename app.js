@@ -69,7 +69,7 @@ document.getElementById("showCharacter").addEventListener("click", () => {
   showScreen('character');
 });
 
-document.getElementById("skip-btn").addEventListener("click", () skipQuest);
+document.getElementById("skip-btn").addEventListener("click", skipQuest);
 
 
 // =======================
@@ -520,6 +520,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
