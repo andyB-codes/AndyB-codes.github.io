@@ -379,11 +379,13 @@ function renderCurrentQuest() {
   const today = allQuests[currentQuest];
   if (!today) return;
 
+  // 1️⃣ Fade Out
   indoorEl.classList.add("fade-out");
   outdoorEl.classList.add("fade-out");
 
   setTimeout(() => {
 
+    // 2️⃣ Update content while invisible
     indoorEl.innerHTML =
       `<h3>${today.indoor.title}</h3>
        <h4>Bonus points: ${today.indoor.bonus}</h4>
@@ -394,20 +396,21 @@ function renderCurrentQuest() {
        <h4>Bonus points: ${today.outdoor.bonus}</h4>
        <p>${today.outdoor.description}</p>`;
 
+    // 3️⃣ Force browser to register opacity 0 before fade-in
+    void indoorEl.offsetWidth;
+    void outdoorEl.offsetWidth;
+
+    // 4️⃣ Fade Back In
     indoorEl.classList.remove("fade-out");
     outdoorEl.classList.remove("fade-out");
 
-    // Retrigger shimmer
-    indoorEl.classList.remove("quest-shimmer");
-    outdoorEl.classList.remove("quest-shimmer");
+    // 5️⃣ Trigger shimmer AFTER fade begins
+    setTimeout(() => {
+      triggerShimmer(indoorEl);
+      triggerShimmer(outdoorEl);
+    }, 50);
 
-    void indoorEl.offsetWidth; // force reflow
-    void outdoorEl.offsetWidth;
-
-    indoorEl.classList.add("quest-shimmer");
-    outdoorEl.classList.add("quest-shimmer");
-
-  }, 1000);
+  }, 400); // match CSS transition
 }
 // =======================
 // SKIP FUNCTION
@@ -552,6 +555,16 @@ function triggerEmberBurst() {
   }
 }
 
+// =======================
+// HELPER FUNCTIONS
+// =======================
+
+function triggerShimmer(el) {
+  el.classList.remove("quest-shimmer");
+  void el.offsetWidth;
+  el.classList.add("quest-shimmer");
+}
+
 
 // =======================
 // RUN LOAD ORDER
@@ -562,6 +575,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
