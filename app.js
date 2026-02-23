@@ -334,7 +334,7 @@ async function loadDailyQuest() {
   // 1️⃣ Load quests from Firebase
   const month = date.toISOString().slice(0, 7); // "2026-02"
   const q = query(
-    collection(db, "months", month, "quests"),
+    collection(db, "questLists", "faye", "quests"),
     orderBy("day")
   );
   const snapshot = await getDocs(q);
@@ -459,6 +459,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
