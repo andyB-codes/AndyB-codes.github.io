@@ -179,6 +179,38 @@ nav {
   }
 }
 
+#ember-burst-container {
+  position: fixed;
+  pointer-events: none;
+  inset: 0;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.ember-burst {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffcc66 0%, #ff6600 60%, transparent 70%);
+  opacity: 0.9;
+  animation: emberFly 0.8s ease-out forwards;
+}
+
+@keyframes emberFly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* ===================== */
+      /* CARD FADE */
+/* ===================== */
+
+
 .fade-transition {
   opacity: 1;
   transition: opacity 0.70s ease;
@@ -188,6 +220,7 @@ nav {
   opacity: 0;
   transition: opacity 0.30s ease;
 }
+
 
 
 
