@@ -26,17 +26,20 @@ logoutBtn.addEventListener("click", async () => {
   await signOut(auth);
 });
 
+const loginScreen = document.getElementById("login-screen");
+const adminPanel = document.getElementById("admin-panel");
+const userInfo = document.getElementById("user-info");
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    // SHOW admin panel
+    loginScreen.style.display = "none";
+    adminPanel.style.display = "block";
     userInfo.textContent = `Logged in as ${user.email}`;
-    loginBtn.style.display = "none";
-    logoutBtn.style.display = "inline-block";
-    document.body.style.opacity = "1";
   } else {
-    userInfo.textContent = "";
-    loginBtn.style.display = "inline-block";
-    logoutBtn.style.display = "none";
-    document.body.style.opacity = "0.3";
+    // SHOW login screen
+    loginScreen.style.display = "flex";
+    adminPanel.style.display = "none";
   }
 });
 
@@ -92,4 +95,5 @@ document.getElementById("single-quest-form").addEventListener("submit", async (e
   // Clear form
   e.target.reset();
 });
+
 
