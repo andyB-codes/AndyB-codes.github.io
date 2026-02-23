@@ -28,7 +28,6 @@ logoutBtn.addEventListener("click", async () => {
 
 const loginScreen = document.getElementById("login-screen");
 const adminPanel = document.getElementById("admin-panel");
-const userInfo = document.getElementById("user-info");
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -95,5 +94,6 @@ document.getElementById("single-quest-form").addEventListener("submit", async (e
   // Clear form
   e.target.reset();
 });
+
 
 
