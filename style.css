@@ -181,12 +181,13 @@ nav {
 
 .fade-transition {
   opacity: 1;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.55s ease;
 }
 
 .fade-out {
   opacity: 0;
 }
+
 
 
 
