@@ -41,19 +41,26 @@
   </header>
 
   <main id="home-screen">
-    <div class="card">
+    <div class="card fade-transition">
       <h2>🌿 Indoor Quest</h2>
       <p id="indoor-quest"></p>
       <button id="indoor-btn">Complete (+10 XP)</button>
       <button id="indoor-bonus-btn" class="bonus">Bonus XP (+5)</button>
     </div>
 
-    <div class="card">
+    <div class="card fade-transition">
       <h2>🌲 Outdoor Quest</h2>
       <p id="outdoor-quest"></p>
       <button id="outdoor-btn">Complete (+10 XP)</button>
 	<button id="outdoor-bonus-btn" class="bonus">Bonus XP (+5)</button>
     </div>
+
+	<div class="card">
+	  <h3>Not Today…</h3>
+	  <p>The realm understands. You may pass this trial.</p>
+	  <button id="skip-btn">Skip Quest</button>
+	</div>
+	
   </main>
 
   <section id="monthly-screen" class="hidden">
@@ -90,6 +97,7 @@
 <script type="module" src="app.js"></script>
 </body>
 </html>
+
 
 
 
