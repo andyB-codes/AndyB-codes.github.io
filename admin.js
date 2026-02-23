@@ -47,7 +47,7 @@ document.getElementById("batch-import-btn").addEventListener("click", async () =
   const fileInput = document.getElementById("batch-json");
   if (!fileInput.files[0]) return alert("Please select a JSON file");
 
-  const monthId = document.getElementById("batch-month").value;
+  const listId = document.getElementById("quest-list").value;
   const text = await fileInput.files[0].text();
   const questsArray = JSON.parse(text);
 
@@ -60,15 +60,15 @@ document.getElementById("batch-import-btn").addEventListener("click", async () =
     await setDoc(docRef, quest);
   }
 
-  alert(`Uploaded ${questsArray.length} quests to ${monthId}!`);
+  alert(`Uploaded ${questsArray.length} quests to ${listId}!`);
 });
 
 // --- 3️⃣ Add Single Quest ---
 document.getElementById("single-quest-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const monthId = document.getElementById("single-month").value;
-  const collectionRef = collection(db, "months", monthId, "quests");
+  const listId = document.getElementById("quest-list-single").value;
+  const collectionRef = collection(db, "questLists", listId, "quests");
 
   // Count current quests for day
   const snapshot = await getDocs(query(collectionRef, orderBy("day")));
@@ -94,6 +94,7 @@ document.getElementById("single-quest-form").addEventListener("submit", async (e
   // Clear form
   e.target.reset();
 });
+
 
 
 
