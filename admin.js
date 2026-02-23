@@ -51,7 +51,7 @@ document.getElementById("batch-import-btn").addEventListener("click", async () =
   const text = await fileInput.files[0].text();
   const questsArray = JSON.parse(text);
 
-  const collectionRef = collection(db, "months", monthId, "quests");
+  const collectionRef = collection(db, "questLists", listId, "quests");
 
   for (let i = 0; i < questsArray.length; i++) {
     const quest = questsArray[i];
@@ -94,6 +94,7 @@ document.getElementById("single-quest-form").addEventListener("submit", async (e
   // Clear form
   e.target.reset();
 });
+
 
 
 
