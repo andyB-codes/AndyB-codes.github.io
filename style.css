@@ -53,7 +53,7 @@ header h1 {
     linear-gradient(145deg, #fdf6e2, #f7ebd0), /* very light parchment base */
     /* Fine speck layer */
     url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'>\
+<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'>\
 <filter id='fineNoise'><feTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='1 0 0 0 0.02  0 1 0 0 0.015  0 0 1 0 0.01  0 0 0 1 0'/></filter>\
 <rect width='100%' height='100%' filter='url(%23fineNoise)' opacity='0.15'/></svg>"),
     /* Medium grain layer */
@@ -64,9 +64,9 @@ header h1 {
     /* Coarse scratches / imperfections */
     url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'>\
-<filter id='coarseNoise'><feTurbulence type='turbulence' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='1 0 0 0 0.05  0 1 0 0 0.04  0 0 1 0 0.03  0 0 0 1 0'/></filter>\
-<rect width='100%' height='100%' filter='url(%23coarseNoise)' opacity='0.30'/></svg>");
-  background-blend-mode: soft-light;
+<filter id='coarseNoise'><feTurbulence type='turbulence' baseFrequency='0.2' numOctaves='6' stitchTiles='stitch'/><feColorMatrix type='matrix' values='1 0 0 0 0.05  0 1 0 0 0.04  0 0 1 0 0.03  0 0 0 1 0'/></filter>\
+<rect width='100%' height='100%' filter='url(%23coarseNoise)' opacity='0.50'/></svg>");
+  background-blend-mode: overlay;
   background-size: cover;
   padding: 18px;
   border-radius: 16px;
@@ -288,6 +288,7 @@ nav {
 .fade-transition.fade-out {
   opacity: 0;
 }
+
 
 
 
