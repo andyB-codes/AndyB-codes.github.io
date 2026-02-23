@@ -399,7 +399,7 @@ function renderCurrentQuest() {
     indoorEl.classList.remove("fade-out");
     outdoorEl.classList.remove("fade-out");
 
-  }, 550); // match CSS transition time
+  }, 1000); // match CSS transition time
 }
 // =======================
 // SKIP FUNCTION
@@ -520,6 +520,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
