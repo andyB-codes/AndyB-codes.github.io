@@ -50,15 +50,22 @@ header h1 {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(145deg, #f5e6c8, #f0dcb4),
+    linear-gradient(145deg, #fcf6e8, #f8eddb), /* lighter parchment base */
+    /* Fine dust layer */
     url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>\
-<filter id='noise'>\
-<feTurbulence type='fractalNoise' baseFrequency='0.2' numOctaves='4' stitchTiles='stitch'/>\
-<feColorMatrix type='matrix' values='1 0 0 0 0.05  0 1 0 0 0.04  0 0 1 0 0.02  0 0 0 1 0'/>\
-</filter>\
-<rect width='100%' height='100%' filter='url(%23noise)' opacity='0.3'/>\
-</svg>");
+<filter id='fineNoise'><feTurbulence type='fractalNoise' baseFrequency='3.0' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='1 0 0 0 0.01  0 1 0 0 0.01  0 0 1 0 0.005  0 0 0 1 0'/></filter>\
+<rect width='100%' height='100%' filter='url(%23fineNoise)' opacity='0.10'/></svg>"),
+    /* Medium grain layer */
+    url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>\
+<filter id='mediumNoise'><feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='matrix' values='1 0 0 0 0.03  0 1 0 0 0.02  0 0 1 0 0.01  0 0 0 1 0'/></filter>\
+<rect width='100%' height='100%' filter='url(%23mediumNoise)' opacity='0.20'/></svg>"),
+    /* Coarse scratches layer */
+    url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>\
+<filter id='coarseNoise'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='1 0 0 0 0.04  0 1 0 0 0.03  0 0 1 0 0.02  0 0 0 1 0'/></filter>\
+<rect width='100%' height='100%' filter='url(%23coarseNoise)' opacity='0.25'/></svg>");
   background-blend-mode: overlay;
   background-size: cover;
   padding: 18px;
@@ -73,7 +80,8 @@ header h1 {
   inset: 0;
   border-radius: 18px;
   box-shadow:
-    inset 0 0 25px rgba(120, 80, 30, 0.15);
+    inset 0 0 40px rgba(120, 80, 30, 0.10), /* softer inner glow */
+    inset 0 0 5px rgba(0, 0, 0, 0.03);      /* tiny subtle scratches for depth */
   pointer-events: none;
 }
 
@@ -279,6 +287,7 @@ nav {
 .fade-transition.fade-out {
   opacity: 0;
 }
+
 
 
 
