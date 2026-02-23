@@ -346,7 +346,7 @@ async function loadDailyQuest() {
     snapshot.forEach(doc => allQuests.push(doc.data()));
   }
 
-  if (quests.length === 0) {
+  if (allQuests.length === 0) {
     console.warn("No quests found for this month!");
     return;
   }
@@ -520,6 +520,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
