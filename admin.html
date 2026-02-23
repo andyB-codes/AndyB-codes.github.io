@@ -14,48 +14,51 @@
   </style>
 </head>
 <body>
-	<button id="login-btn">Login with Google</button>
-	<button id="logout-btn" style="display:none;">Logout</button>
-	<p id="user-info"></p>
-  <h1>Magical Quest Admin Portal</h1>
 
-  <!-- Batch Import -->
-  <section>
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <h1>Magical Quest Admin Portal</h1>
+    <p>Sign in with Google to manage quests and upload new adventures.</p>
+    <button id="login-btn">Login with Google</button>
+  </div>
+
+  <!-- ADMIN PANEL (HIDDEN BY DEFAULT) -->
+  <div id="admin-panel" style="display:none;">
+
+    <div style="text-align:right;">
+      <span id="user-info"></span>
+      <button id="logout-btn">Logout</button>
+    </div>
+
     <h2>Batch Import Quests</h2>
     <input type="file" id="batch-json" accept=".json">
     <select id="batch-month">
       <option value="2026-02">2026-02</option>
-      <option value="2026-03">2026-03</option>
     </select>
     <button id="batch-import-btn">Batch Import</button>
-  </section>
 
-  <!-- Add Single Quest -->
-  <section>
+    <hr>
+
     <h2>Add Single Quest</h2>
     <select id="single-month">
       <option value="2026-02">2026-02</option>
-      <option value="2026-03">2026-03</option>
     </select>
-    <form id="single-quest-form">
-      <label>Indoor Title</label>
-      <input id="indoor-title">
-      <label>Indoor Description</label>
-      <textarea id="indoor-desc"></textarea>
-      <label>Indoor Bonus</label>
-      <input id="indoor-bonus">
 
-      <label>Outdoor Title</label>
-      <input id="outdoor-title">
-      <label>Outdoor Description</label>
-      <textarea id="outdoor-desc"></textarea>
-      <label>Outdoor Bonus</label>
-      <input id="outdoor-bonus">
+    <form id="single-quest-form">
+      <input id="indoor-title" placeholder="Indoor Title">
+      <textarea id="indoor-desc" placeholder="Indoor Description"></textarea>
+      <input id="indoor-bonus" placeholder="Indoor Bonus">
+
+      <input id="outdoor-title" placeholder="Outdoor Title">
+      <textarea id="outdoor-desc" placeholder="Outdoor Description"></textarea>
+      <input id="outdoor-bonus" placeholder="Outdoor Bonus">
 
       <button type="submit">Add Single Quest</button>
     </form>
-  </section>
+
+  </div>
 
   <script type="module" src="admin.js"></script>
 </body>
 </html>
+
