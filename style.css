@@ -48,7 +48,6 @@ header h1 {
 
 .card {
   position: relative;
-  overflow: hidden;
   background: var(--card);
   padding: 18px;
   border-radius: 16px;
@@ -291,6 +290,7 @@ nav {
 .fade-transition.fade-out {
   opacity: 0;
 }
+
 
 
 
