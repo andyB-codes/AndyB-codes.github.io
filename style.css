@@ -239,12 +239,13 @@ nav {
 
 .fade-transition {
   opacity: 1;
-  transition: opacity 0.40s ease;
+  transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
 }
 
 .fade-transition.fade-out {
   opacity: 0;
 }
+
 
 
 
