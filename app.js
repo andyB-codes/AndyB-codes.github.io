@@ -19,7 +19,8 @@ const db = getFirestore(app);
 // =======================
 // STATE
 // =======================
- 
+
+let allQuests = [];
 let xp = parseInt(localStorage.getItem("xp")) || 0;
 let streak = parseInt(localStorage.getItem("streak")) || 0;
 let lastIndoorCompleted = localStorage.getItem("lastIndoorCompleted") || "";
@@ -67,6 +68,8 @@ document.getElementById("showMonthly").addEventListener("click", () => {
 document.getElementById("showCharacter").addEventListener("click", () => {
   showScreen('character');
 });
+
+document.getElementById("skip-btn").addEventListener("click", () skipQuest);
 
 
 // =======================
@@ -316,7 +319,7 @@ function determineCurrentQuest(){
   } else {
     if (lastCompletedQuest > currentQuest){
       currentQuest++;
-      localStorage.setItem("currentQuest",currentQuest);
+      localStorage.setItem("currentQuestNumber",currentQuest);
     }
   }
 
@@ -339,8 +342,9 @@ async function loadDailyQuest() {
   );
   const snapshot = await getDocs(q);
 
-  const quests = [];
-  snapshot.forEach(doc => quests.push(doc.data()));
+  if (allQuests.length === 0) {
+    snapshot.forEach(doc => allQuests.push(doc.data()));
+  }
 
   if (quests.length === 0) {
     console.warn("No quests found for this month!");
@@ -348,10 +352,9 @@ async function loadDailyQuest() {
   }
 
   const todayIndex = currentQuest || 0; // or your logic to pick the quest of the day
-  const today = quests[todayIndex];
+  const today = allQuests[todayIndex];
  
-  document.getElementById("indoor-quest").innerHTML = `<h3>${today.indoor.title}</h3> <h4>Bonus points: ${today.indoor.bonus}</h4> <p>${today.indoor.description}</p>`;
-  document.getElementById("outdoor-quest").innerHTML = `<h3>${today.outdoor.title}</h3> <h4>Bonus points: ${today.outdoor.bonus}</h4> <p>${today.outdoor.description}</p>`;
+  renderCurrentQuest();
 
 
   if (lastIndoorCompleted === date.toDateString()) {
@@ -367,6 +370,64 @@ async function loadDailyQuest() {
    disableBonusButton("outdoor");
   }
  
+}
+
+function renderCurrentQuest() {
+  const indoorEl = document.getElementById("indoor-quest");
+  const outdoorEl = document.getElementById("outdoor-quest");
+
+  const today = allQuests[currentQuest];
+  if (!today) return;
+
+  // Fade out
+  indoorEl.classList.add("fade-out");
+  outdoorEl.classList.add("fade-out");
+
+  setTimeout(() => {
+    // Update content while invisible
+    indoorEl.innerHTML =
+      `<h3>${today.indoor.title}</h3>
+       <h4>Bonus points: ${today.indoor.bonus}</h4>
+       <p>${today.indoor.description}</p>`;
+
+    outdoorEl.innerHTML =
+      `<h3>${today.outdoor.title}</h3>
+       <h4>Bonus points: ${today.outdoor.bonus}</h4>
+       <p>${today.outdoor.description}</p>`;
+
+    // Fade back in
+    indoorEl.classList.remove("fade-out");
+    outdoorEl.classList.remove("fade-out");
+
+  }, 350); // match CSS transition time
+}
+// =======================
+// SKIP FUNCTION
+// =======================
+function skipQuest() {
+  if (allQuests.length === 0) return;
+
+  currentQuest++;
+  
+  // Prevent going past available quests
+  if (currentQuest >= allQuests.length) {
+    currentQuest = 0; // or stop at last if you prefer
+  }
+
+  localStorage.setItem("currentQuestNumber", currentQuest);
+
+  // Reset completion + bonus states for new quest
+  lastIndoorCompleted = "";
+  lastOutdoorCompleted = "";
+  indoorBonusClaimedDate = "";
+  outdoorBonusClaimedDate = "";
+
+  localStorage.removeItem("lastIndoorCompleted");
+  localStorage.removeItem("lastOutdoorCompleted");
+  localStorage.removeItem("indoorBonusClaimedDate");
+  localStorage.removeItem("outdoorBonusClaimedDate");
+
+  renderCurrentQuest();
 }
 
 // =======================
@@ -459,6 +520,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
