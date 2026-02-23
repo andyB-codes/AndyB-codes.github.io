@@ -379,12 +379,11 @@ function renderCurrentQuest() {
   const today = allQuests[currentQuest];
   if (!today) return;
 
-  // Fade out
   indoorEl.classList.add("fade-out");
   outdoorEl.classList.add("fade-out");
 
   setTimeout(() => {
-    // Update content while invisible
+
     indoorEl.innerHTML =
       `<h3>${today.indoor.title}</h3>
        <h4>Bonus points: ${today.indoor.bonus}</h4>
@@ -395,11 +394,20 @@ function renderCurrentQuest() {
        <h4>Bonus points: ${today.outdoor.bonus}</h4>
        <p>${today.outdoor.description}</p>`;
 
-    // Fade back in
     indoorEl.classList.remove("fade-out");
     outdoorEl.classList.remove("fade-out");
 
-  }, 1000); // match CSS transition time
+    // Retrigger shimmer
+    indoorEl.classList.remove("quest-shimmer");
+    outdoorEl.classList.remove("quest-shimmer");
+
+    void indoorEl.offsetWidth; // force reflow
+    void outdoorEl.offsetWidth;
+
+    indoorEl.classList.add("quest-shimmer");
+    outdoorEl.classList.add("quest-shimmer");
+
+  }, 1000);
 }
 // =======================
 // SKIP FUNCTION
@@ -427,6 +435,7 @@ function skipQuest() {
   localStorage.removeItem("indoorBonusClaimedDate");
   localStorage.removeItem("outdoorBonusClaimedDate");
 
+  triggerEmberBurst();
   renderCurrentQuest();
 }
 
@@ -491,7 +500,9 @@ function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
-// Aesthetics - Embers
+// =======================
+// EMBERS
+// =======================
 
 function createEmbers() {
   const container = document.querySelector(".embers");
@@ -515,11 +526,43 @@ function createEmbers() {
   }
 }
 
+function triggerEmberBurst() {
+  const container = document.getElementById("ember-burst-container");
+
+  for (let i = 0; i < 20; i++) {
+    const ember = document.createElement("span");
+    ember.classList.add("ember-burst");
+
+    const size = Math.random() * 8 + 4;
+    ember.style.width = size + "px";
+    ember.style.height = size + "px";
+
+    ember.style.left = window.innerWidth / 2 + "px";
+    ember.style.top = window.innerHeight / 2 + "px";
+
+    const x = (Math.random() - 0.5) * 300 + "px";
+    const y = (Math.random() - 0.5) * 300 + "px";
+
+    ember.style.setProperty("--x", x);
+    ember.style.setProperty("--y", y);
+
+    container.appendChild(ember);
+
+    setTimeout(() => ember.remove(), 800);
+  }
+}
+
+
+// =======================
+// RUN LOAD ORDER
+// =======================
+
 determineCurrentQuest();
 loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
