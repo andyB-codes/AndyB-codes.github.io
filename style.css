@@ -179,13 +179,13 @@ nav {
   }
 }
 
-#login-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
+.fade-transition {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.fade-out {
+  opacity: 0;
 }
 
 
