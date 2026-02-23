@@ -229,13 +229,7 @@ nav {
   }
 }
 
-.quest-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.quest-shimmer::after {
-  content: "";
+.shimmer-layer {
   position: absolute;
   top: 0;
   left: -120%;
@@ -251,11 +245,6 @@ nav {
   );
   animation: shimmerMove 1.8s ease forwards;
   pointer-events: none;
-}
-
-@keyframes shimmerMove {
-  from { left: -120%; }
-  to   { left: 120%; }
 }
 
 /* ===================== */
@@ -290,6 +279,7 @@ nav {
 .fade-transition.fade-out {
   opacity: 0;
 }
+
 
 
 
