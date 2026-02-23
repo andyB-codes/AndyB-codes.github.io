@@ -48,6 +48,7 @@ header h1 {
 
 .card {
   position: relative;
+  overflow: hidden;
   background: var(--card);
   padding: 18px;
   border-radius: 16px;
@@ -72,7 +73,7 @@ header h1 {
 </svg>");
 
   background-blend-mode: multiply;
-  opacity: 0.8;
+  opacity: 0.4;
   pointer-events: none;
 }
 
@@ -288,6 +289,7 @@ nav {
 .fade-transition.fade-out {
   opacity: 0;
 }
+
 
 
 
