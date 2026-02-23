@@ -373,8 +373,8 @@ async function loadDailyQuest() {
 }
 
 function renderCurrentQuest() {
-  const indoorEl = document.getElementById("indoor-quest");
-  const outdoorEl = document.getElementById("outdoor-quest");
+  const indoorEl = document.getElementById("indoor-quest-card");
+  const outdoorEl = document.getElementById("outdoor-quest-card");
 
   const today = allQuests[currentQuest];
   if (!today) return;
@@ -581,6 +581,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
