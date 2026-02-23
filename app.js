@@ -376,6 +376,9 @@ function renderCurrentQuest() {
   const indoorEl = document.getElementById("indoor-quest-card");
   const outdoorEl = document.getElementById("outdoor-quest-card");
 
+  const indoorTextEl = document.getElementById("indoor-quest");
+  const outdoorTextEl = document.getElementById("outdoor-quest");
+
   const today = allQuests[currentQuest];
   if (!today) return;
 
@@ -386,12 +389,12 @@ function renderCurrentQuest() {
   setTimeout(() => {
 
     // 2️⃣ Update content while invisible
-    indoorEl.innerHTML =
+    indoorTextEl.innerHTML =
       `<h3>${today.indoor.title}</h3>
        <h4>Bonus points: ${today.indoor.bonus}</h4>
        <p>${today.indoor.description}</p>`;
 
-    outdoorEl.innerHTML =
+    outdoorTextEl.innerHTML =
       `<h3>${today.outdoor.title}</h3>
        <h4>Bonus points: ${today.outdoor.bonus}</h4>
        <p>${today.outdoor.description}</p>`;
@@ -581,6 +584,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
