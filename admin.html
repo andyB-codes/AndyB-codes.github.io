@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quest Admin Portal</title>
+  <style>
+    body { font-family: sans-serif; background: #1a1a1a; color: #eee; padding: 20px; }
+    h1 { text-align: center; color: #f0c674; }
+    section { margin-bottom: 40px; }
+    input, textarea, button { display: block; margin: 10px 0; padding: 8px; width: 100%; max-width: 400px; }
+    button { background: #f0c674; border: none; cursor: pointer; }
+    button:hover { background: #e0b560; }
+    label { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Magical Quest Admin Portal</h1>
+
+  <!-- Batch Import -->
+  <section>
+    <h2>Batch Import Quests</h2>
+    <input type="file" id="batch-json" accept=".json">
+    <select id="batch-month">
+      <option value="2026-02">2026-02</option>
+      <option value="2026-03">2026-03</option>
+    </select>
+    <button id="batch-import-btn">Batch Import</button>
+  </section>
+
+  <!-- Add Single Quest -->
+  <section>
+    <h2>Add Single Quest</h2>
+    <select id="single-month">
+      <option value="2026-02">2026-02</option>
+      <option value="2026-03">2026-03</option>
+    </select>
+    <form id="single-quest-form">
+      <label>Indoor Title</label>
+      <input id="indoor-title">
+      <label>Indoor Description</label>
+      <textarea id="indoor-desc"></textarea>
+      <label>Indoor Bonus</label>
+      <input id="indoor-bonus">
+
+      <label>Outdoor Title</label>
+      <input id="outdoor-title">
+      <label>Outdoor Description</label>
+      <textarea id="outdoor-desc"></textarea>
+      <label>Outdoor Bonus</label>
+      <input id="outdoor-bonus">
+
+      <button type="submit">Add Single Quest</button>
+    </form>
+  </section>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
