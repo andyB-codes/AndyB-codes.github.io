@@ -159,7 +159,8 @@ function triggerLevelUp(level) {
 // =======================
  
 function completeQuest(type) {
-  const today = new Date().toDateString();
+  const dateToday = new Date();
+  const today = dateToday.toDateString();
 
   var lastCompleted = "";
   let capType = capitalizeFirstLetter(type);
@@ -220,6 +221,8 @@ function disableQuestButton(type){
  
   btn.disabled = true;
   btn.innerText = "Completed ✨";
+
+  disableSkipButton()
 }
 
 function disableBonusButton(type){
@@ -228,6 +231,16 @@ function disableBonusButton(type){
  
   btn.disabled = true;
   btn.innerText = "Bonus Claimed ✨";
+
+  disableSkipButton()
+}
+
+function disableSkipButton(){
+  const btn = document.getElementById("skip-btn");
+  if(!btn) return;
+ 
+  btn.disabled = true;
+  btn.innerText = "You Completed a Task!";
 }
  
 // =======================
@@ -587,6 +600,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
