@@ -236,11 +236,10 @@ function disableBonusButton(type){
 }
 
 function disableSkipButton(){
-  const btn = document.getElementById("skip-btn");
-  if(!btn) return;
+  const crd = document.getElementById("skip-card");
+  if(!crd) return;
  
-  btn.disabled = true;
-  btn.innerText = "You Completed a Task!";
+  crd.classList.add("hidden");
 }
  
 // =======================
@@ -600,6 +599,7 @@ loadMonthly();
 checkIntro();
 updateUI();
 createEmbers()
+
 
 
 
